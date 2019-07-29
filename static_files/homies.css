@@ -16,7 +16,7 @@ body {
   
   /* make it look decent enough */
   
-   color: #cdcdcd;
+   color: #B35544;
 
     
   
@@ -37,8 +37,8 @@ a:hover
 
 #menuToggle
 {
-  display: block;
-  position: relative;
+  display: box;
+   
   top: 50px;
   left: 50px;
   
