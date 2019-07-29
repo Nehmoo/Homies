@@ -29,5 +29,20 @@ class MainHandler(webapp2.RequestHandler):
         if get_user_email():
             profile = socialdataapp.get_user_profile(get_user_email())
             values['name'] = profile.name
-        render_template(self, 'mainpage.html', values)
+        render_template(self, 'mainpageapp.html', values)
 
+class ProfileEditHandler(webapp2.RequestHandler):
+    def get(self):
+        if not get_user_email():
+            self.redirect('/')
+        else:
+            values = get_user_data()
+            profile = socialdata.get_user_profile(get_user_email())
+            values['name'] = profile.name
+            values['description'] = profile.description
+            render_template(self, 'profile-edit.html', values)
+
+app = webapp2.WSGIApplication([
+    ('/profile-edit', ProfileEditHandler),
+    ('.*', MainHandler),
+])

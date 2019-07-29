@@ -4,9 +4,9 @@ def save_profile(email, name, phone_number):
     p = get_user_profile(email)
     if p:
         p.name = name
-        p.description = description
+        p.phone_number = phone_number
     else:
-        p = UserProfile(email=email, name=name, description=description)
+        p = HomiesProfile(email=email, name=name, phone_number=phone_number)
     p.put()
 
 def get_user_profile(email):
@@ -17,13 +17,13 @@ def get_user_profile(email):
     return None
 
 def get_profile_by_name(name):
-    q =UserProfile.query(UserProfile.name == name)
+    q = HomiesProfile.query(HomiesProfile.name == name)
     results = q.fetch(1)
     for profile in results:
         return profile
     return None
 
 def get_recent_profiles():
-    q = UserProfile.query().order(-UserProfile.last_update)
+    q = HomiesProfile.query().order(-HomiesProfile.last_update)
     return q.fetch(50)
 
