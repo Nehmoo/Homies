@@ -9,16 +9,14 @@ body {
     font-family: Roboto;
     text-align: center;
     font-size: 15px;
-    color: #1A5276;
     background-size: cover;
     margin: 0;
     padding: 0;
   
   /* make it look decent enough */
   
-   color: #cdcdcd;
-
-    
+    color: #cdcdcd;
+   
   
 }
 
@@ -91,6 +89,7 @@ a:hover
 #menuToggle span:first-child
 {
   transform-origin: 0% 0%;
+  align: left;
 }
 
 #menuToggle span:nth-last-child(2)
@@ -167,23 +166,8 @@ a:hover
 
 
 
-a {
-    font-family: Roboto;
-    color: blue;
-    font-size: 15px
-}
-
-#topmenu {
-    font-family: Roboto;
-    text-align: center;
-    font-size; 20px;
-    color: purple;
-}
 
 
-#topmenu:hover {
-    background-color: blue;
-}
 
 #successmsg{
     font-weight: bold;
