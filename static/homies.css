@@ -14,6 +14,10 @@ body {
     font-family: Roboto;
     text-align: center;
     font-size: 15px;
+<<<<<<< HEAD:static_files/homies.css
+=======
+    color: rgb(189, 92, 245);
+>>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -46,6 +50,7 @@ a:hover
 
 #menuToggle
 {
+<<<<<<< HEAD:static_files/homies.css
   display: box;
    
   top: 50px;
@@ -57,10 +62,23 @@ a:hover
   
   -webkit-user-select: none;
   user-select: none;
+=======
+    padding-top: 10px;
+    padding-left: 10px;
+    display: box;
+    top: 50px;
+    left: 50px;
+    
+    z-index: 1;
+    
+    -webkit-user-select: none;
+    user-select: none;
+>>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
 }
 
 #menuToggle input
 {
+<<<<<<< HEAD:static_files/homies.css
   display: block;
   width: 40px;
   height: 32px;
@@ -69,6 +87,15 @@ a:hover
   
   cursor: pointer;
   
+=======
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+>>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
   
