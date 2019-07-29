@@ -1,8 +1,11 @@
 import webapp2
+import logging
 import socialdataapp
-from google.appengine.ext.webapp import template
 import os
+
+from google.appengine.ext.webapp import template
 from google.appengine.api import users
+from google.appengine.api import mail
 
 def render_template(handler, file_name, template_values):
     path = os.path.join(os.path.dirname(__file__), 'templates/', file_name)
@@ -32,6 +35,13 @@ class MainHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
         render_template(self, 'mainpageapp.html', values)
+    
+    def post(self):
+        from_address = 'contact@cs1520mail.appspotmail.com'
+        subject = 'Contact from ' + name
+        body = 'Message from ' + email + ':\n\n' + message
+        mail.send_mail(from_address, 'timothyrjames@gmail.com', subject, body)
+        self.response.out.write("Send Email")
 
 class ProfileEditHandler(webapp2.RequestHandler):
     def get(self):
@@ -76,6 +86,11 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             else:
                 socialdataapp.save_profile(email, name,description)
                 values['successmsg'] = 'Everything worked out fine.'
+
+            from_address = 'contact@cs1520mail.appspotmail.com'
+            subject = 'Contact from ' + name
+            body = 'Message from ' + email + ':\n\n' + message
+            mail.send_mail(from_address, 'timothyrjames@gmail.com', subject, body)
             render_template(self, 'profile-edit.html', values)
 
 class ProfileViewHandler(webapp2.RequestHandler):
@@ -96,7 +111,23 @@ class ProfileListHandler(webapp2.RequestHandler):
         values['profiles'] = profiles
         render_template(self, 'profile-list.html', values)
 
+class FormHandler(webapp2.RequestHandler):
+    def post(self):
+        name = self.request.get('name')
+        message = self.request.get('message')
+        email = self.request.get('email')
+
+        params = {
+          'name': name,
+          'message': message,
+          'email': email
+        }
+
+
+        # render_template(self, 'contact.html', params)
+
 app = webapp2.WSGIApplication([
+    ('/send-contact', FormHandler),
     ('/profile-list', ProfileListHandler),
     ('/p/(.*)', ProfileViewHandler),
     ('/profile-save', ProfileSaveHandler),
