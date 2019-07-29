@@ -1,19 +1,26 @@
 <html>
     <head>
-        <link rel="stylesheet" href="/i/main.css">
+        <link rel="stylesheet" href="/i/homies.css">
     </head>
-    <center><audio autoplay loop src="https://archive.org/download/tvtunes_17585/Harry%20Potter%20-%20Main%20Theme.mp3"> </audio>
-    <body>
-        <div id="topmenu">
-            <a href="/">Home</a>
-            <a href="/profile-list">Recently Updated Profiles</a>
+    <body bgcolor: #E89797>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+            <a href="/"><li>Home</li></a>
+            <a href="/profile-list"><li>About</li></a>
             {% if login_url %}
-            <a href="{{login_url}}">Login </a>
+            <a href="{{login_url}}"><li>Login</li></a>
             {% else %}
-            <a href="{{logout_url}}">Logout</a>
-            <a href="/profile-edit">Edit Profile</a>
+            <a href="{{logout_url}}"><li>Logout</li></a>
+            <a href="/profile-edit" target="_blank"><li>Show me more</li></a>
             <a href="/p/{{name}}">View Profile</a>
             {% endif %}
+            </ul>
+        </nav>
         </div>
         {% if successmsg %}
         <div id="successmsg">{{successmsg}}</div>

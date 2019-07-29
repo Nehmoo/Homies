@@ -87,11 +87,6 @@ class ProfileSaveHandler(webapp2.RequestHandler):
                 socialdataapp.save_profile(email, name,description)
                 values['successmsg'] = 'Everything worked out fine.'
 
-            from_address = 'contact@cs1520mail.appspotmail.com'
-            subject = 'Contact from ' + name
-            body = 'Message from ' + email + ':\n\n' + message
-            mail.send_mail(from_address, 'timothyrjames@gmail.com', subject, body)
-            render_template(self, 'profile-edit.html', values)
 
 class ProfileViewHandler(webapp2.RequestHandler):
     def get(self, profilename):
