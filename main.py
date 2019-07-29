@@ -7,9 +7,11 @@ from google.appengine.ext.webapp import template
 from google.appengine.api import users
 from google.appengine.api import mail
 
+
 def render_template(handler, file_name, template_values):
     path = os.path.join(os.path.dirname(__file__), 'templates/', file_name)
     handler.response.out.write(template.render(path, template_values))
+
 
 def get_user_email():
     user = users.get_current_user()
@@ -27,6 +29,7 @@ def get_user_data():
         values['login_url'] = users.create_login_url('/')
     return values
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         values = get_user_data()
@@ -35,13 +38,14 @@ class MainHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
         render_template(self, 'mainpageapp.html', values)
-    
+
     def post(self):
         from_address = 'contact@cs1520mail.appspotmail.com'
         subject = 'Contact from ' + name
         body = 'Message from ' + email + ':\n\n' + message
         mail.send_mail(from_address, 'timothyrjames@gmail.com', subject, body)
         self.response.out.write("Send Email")
+
 
 class ProfileEditHandler(webapp2.RequestHandler):
     def get(self):
@@ -54,6 +58,7 @@ class ProfileEditHandler(webapp2.RequestHandler):
                 values['name'] = profile.name
                 values['description'] = profile.description
             render_template(self, 'profile-edit.html', values)
+
 
 class ProfileSaveHandler(webapp2.RequestHandler):
     def post(self):
@@ -84,7 +89,7 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             if error_text:
                 values['errormsg'] = error_text
             else:
-                socialdataapp.save_profile(email, name,description)
+                socialdataapp.save_profile(email, name, description)
                 values['successmsg'] = 'Everything worked out fine.'
 
 
@@ -97,7 +102,8 @@ class ProfileViewHandler(webapp2.RequestHandler):
         if profile:
             values['name'] = profile.name
             values['description'] = profile.description
-        render_template(self, 'profile-view.html', values) 
+        render_template(self, 'profile-view.html', values)
+
 
 class ProfileListHandler(webapp2.RequestHandler):
     def get(self):
@@ -105,6 +111,7 @@ class ProfileListHandler(webapp2.RequestHandler):
         values = get_user_data()
         values['profiles'] = profiles
         render_template(self, 'profile-list.html', values)
+
 
 class FormHandler(webapp2.RequestHandler):
     def post(self):
@@ -118,8 +125,8 @@ class FormHandler(webapp2.RequestHandler):
           'email': email
         }
 
+        # render_template(self, 'contact.html', params
 
-        # render_template(self, 'contact.html', params)
 
 app = webapp2.WSGIApplication([
     ('/send-contact', FormHandler),
