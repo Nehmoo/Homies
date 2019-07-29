@@ -3,7 +3,12 @@ h1 {
     text-align: center;
     color:#F7DC6F;
 }
-
+h2 {
+    
+    font-family: 'Pacifico';font-size: 40px;
+    color: white;
+    display: inline;
+    }
 body {
     background-color: #93FFD2;
     font-family: Roboto;
@@ -15,8 +20,14 @@ body {
   
   /* make it look decent enough */
   
+<<<<<<< HEAD
     color: #cdcdcd;
    
+=======
+   color: #B35544;
+
+    
+>>>>>>> dd47b1e11e08b6f01c6ec635866ea24e515d80d3
   
 }
 
@@ -35,10 +46,12 @@ a:hover
 
 #menuToggle
 {
-  display: block;
-  position: relative;
+  display: box;
+   
   top: 50px;
   left: 50px;
+  margin-left: 2%;
+  margin-top: 2%;
   
   z-index: 1;
   
@@ -52,8 +65,7 @@ a:hover
   width: 40px;
   height: 32px;
   position: absolute;
-  top: -7px;
-  left: -5px;
+  
   
   cursor: pointer;
   
@@ -73,7 +85,6 @@ a:hover
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  
   background: #cdcdcd;
   border-radius: 3px;
   
@@ -89,7 +100,7 @@ a:hover
 #menuToggle span:first-child
 {
   transform-origin: 0% 0%;
-  align: left;
+  align: top left;
 }
 
 #menuToggle span:nth-last-child(2)
