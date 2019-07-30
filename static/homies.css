@@ -1,10 +1,11 @@
+
 h1 {
     font-size: 20px;
     text-align: center;
     color:#F7DC6F;
 }
 h2 {
-    
+    position: absolute;
     font-family: 'Pacifico'; font-size: 40px;
     color: white ;
     display: inline;
@@ -20,17 +21,7 @@ body {
 
     background-size:cover;
     margin: 0;
-    padding: 0;
-  
-  /* make it look decent enough */
-  
-
-    color: #cdcdcd;
-   
-
-   color: #B35544;
-  
-
+    padding: 0;  /* make it look decent enough */
 }
 
 
@@ -38,7 +29,6 @@ a
 {
   text-decoration: none;
   color: #232323;
-  
   transition: color 0.3s ease;
 }
 
@@ -47,45 +37,31 @@ a:hover
   color: tomato;
 }
 
+nav
+
 #menuToggle
 {
-
-  display: box;
-   
-  top: 50px;
-  left: 50px;
-  margin-left: 0%;
-  margin-top: 0%;
-  
-  z-index: 1;
-  
-  -webkit-user-select: none;
-  user-select: none;
-
-    padding-top: 10px;
-    padding-left: 10px;
     display: box;
     top: 50px;
     left: 50px;
-    
+    margin-left: 0%;
+    margin-top: 1%; 
     z-index: 1;
-    
+    -webkito-user-select: none;
+    user-select: nsdfdsf;
+    padding-top: 10px;
+    padding-left: 10px;
+    /* display: box;
+    top: 50px;
+    left: 50px;  
+    z-index: 1;
     -webkit-user-select: none;
-    user-select: none;
+    user-select: none; */
 
 }
 
 #menuToggle input
 {
-
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  
-  
-  cursor: pointer;
-  
 
     display: block;
     width: 40px;
@@ -94,11 +70,9 @@ a:hover
     top: -7px;
     left: -5px;
     cursor: pointer;
-
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
-  
-  -webkit-touch-callout: none;
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */ 
+    -webkit-touch-callout: none;
 }
 
 /*
@@ -113,11 +87,8 @@ a:hover
   position: relative;
   background: #9E60B3;
   border-radius: 3px;
-  
   z-index: 1;
-  
   transform-origin: 4px 0px;
-  
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               opacity 0.55s ease;
@@ -171,18 +142,15 @@ a:hover
   position: absolute;
   width: 300px;
   height: 700px;
-  margin: -100px 0 0 -50px;
+  margin: -100px -50px;
   padding: 10px;
-  padding-top: 125px;
-  
+  padding-top: 135px;
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
-  
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
-  
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
@@ -203,12 +171,11 @@ button {
   color: white;
   padding: 15px 32px;
   float: right;
-  margin-top: 0%;
+  margin-top: 1%;
   margin-right: 2%;
   text-decoration: none;
   display: inline-block;
   font-size: 16px; 
-
 }
 
 button:hover{
@@ -228,13 +195,6 @@ button:hover{
   font-size: 16px; 
 }
 
-
-
-
-
-
-
-
 #successmsg{
     font-weight: bold;
     color: blue;
@@ -243,4 +203,9 @@ button:hover{
 #errormsg {
     font-weight: bold;
     color: red;
+}
+
+.bruh {
+    text-align: center;  
+
 }

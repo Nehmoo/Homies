@@ -2,37 +2,39 @@
     <head>
       <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
       <link rel="stylesheet" href="/i/homies.css">
+      <link rel="icon" href="https://www.clickwhisperer.com/wp-content/uploads/2013/02/Vine-logo.png">
     </head>
     <body bgcolor: #E89797>
-       
-    <nav role="navigation">
-    
-        <div id="menuToggle">
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
-            <ul id="menu">
-            <a href="/"><li>Home</li></a>
-            <a href="/profile-list"><li>About</li></a>
-            <a href="/profile-edit" target="_blank"><li>Show me more</li></a>
-            <a href="/p/{{name}}"><li>View Profile</li></a>
-            
-            </ul>
+        <nav role="navigation">
+            <container>
+            <div class="bruh"><h2> Homies </h2></div>
+            <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                    <a href="/"><li>Home</li></a>
+                    <a href="/profile-list"><li>About</li></a>
+                    <a href="/profile-edit" target="_blank"><li>Show me more</li></a>
+                    <a href="/p/{{name}}"><li>View Profile</li></a>        
+                </ul>
+            </div>
+            <container>
         </nav>
             {% if login_url %}
-            <a href="{{login_url}}"><button type="button">Login</button></a>
-            {% else %}
-            <a href="{{logout_url}}"<button type="button">Logout</button></a>
-            {% endif %}
-        <center> <h2> Homies </h2> </center>
-        </div>
-        {% if successmsg %}
+            <div class="bruh">
+                <a href="{{login_url}}"><button type="button">Login</button></a>
+                {% else %}
+                <a href="{{logout_url}}"><button type="button">Logout</button></a>
+                {% endif %}
+            </div>
+            {% if successmsg %}
         <div id="successmsg">{{successmsg}}</div>
-        {% endif %}
-        {% if errormsg %}
+            {% endif %}
+            {% if errormsg %}
         <div id="errormsg">{{errormsg}}</div>
-        {% endif %}
-        {% block content %}{% endblock %}
+            {% endif %}
+            {% block content %}{% endblock %}
     </body>
 <html>
