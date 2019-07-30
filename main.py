@@ -40,10 +40,10 @@ class MainHandler(webapp2.RequestHandler):
         render_template(self, 'mainpageapp.html', values)
 
     def post(self):
-        from_address = 'contact@cs1520mail.appspotmail.com'
-        subject = 'Contact from ' + name
-        body = 'Message from ' + email + ':\n\n' + message
-        mail.send_mail(from_address, 'timothyrjames@gmail.com', subject, body)
+        from_address = 'contact@cs-chat-example.appspotmail.com'
+        subject = 'Contact from the server'
+        body = 'Message from the server:\n\nIT is working.'
+        mail.send_mail(from_address, 'nehemiah.omakor@gmail.com', subject, body)
         self.response.out.write("Send Email")
 
 

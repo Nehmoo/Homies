@@ -3,22 +3,35 @@ h1 {
     text-align: center;
     color:#F7DC6F;
 }
-
+h2 {
+    
+    font-family: 'Pacifico';font-size: 40px;
+    color: white;
+    display: inline;
+    }
 body {
     background-color: #93FFD2;
     font-family: Roboto;
     text-align: center;
     font-size: 15px;
+<<<<<<< HEAD:static_files/homies.css
+=======
     color: rgb(189, 92, 245);
+>>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
     background-size: cover;
     margin: 0;
     padding: 0;
   
   /* make it look decent enough */
   
+<<<<<<< HEAD
+    color: #cdcdcd;
+   
+=======
    color: #B35544;
 
     
+>>>>>>> dd47b1e11e08b6f01c6ec635866ea24e515d80d3
   
 }
 
@@ -37,6 +50,19 @@ a:hover
 
 #menuToggle
 {
+<<<<<<< HEAD:static_files/homies.css
+  display: box;
+   
+  top: 50px;
+  left: 50px;
+  margin-left: 2%;
+  margin-top: 2%;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+=======
     padding-top: 10px;
     padding-left: 10px;
     display: box;
@@ -47,10 +73,21 @@ a:hover
     
     -webkit-user-select: none;
     user-select: none;
+>>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
 }
 
 #menuToggle input
 {
+<<<<<<< HEAD:static_files/homies.css
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  
+  
+  cursor: pointer;
+  
+=======
     display: block;
     width: 40px;
     height: 32px;
@@ -58,6 +95,7 @@ a:hover
     top: -7px;
     left: -5px;
     cursor: pointer;
+>>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
   
@@ -74,8 +112,12 @@ a:hover
   height: 4px;
   margin-bottom: 5px;
   position: relative;
+<<<<<<< HEAD
   
   background: #93FFD2;
+=======
+  background: #cdcdcd;
+>>>>>>> d8a43258879e42f11c0dbb1b5483c7393a59a110
   border-radius: 3px;
   
   z-index: 1;
@@ -90,6 +132,7 @@ a:hover
 #menuToggle span:first-child
 {
   transform-origin: 0% 0%;
+  align: top left;
 }
 
 #menuToggle span:nth-last-child(2)
@@ -166,23 +209,8 @@ a:hover
 
 
 
-a {
-    font-family: Roboto;
-    color: blue;
-    font-size: 15px
-}
-
-#topmenu {
-    font-family: Roboto;
-    text-align: center;
-    font-size; 20px;
-    color: purple;
-}
 
 
-#topmenu:hover {
-    background-color: blue;
-}
 
 #successmsg{
     font-weight: bold;
