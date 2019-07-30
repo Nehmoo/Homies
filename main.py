@@ -69,28 +69,28 @@ class ProfileSaveHandler(webapp2.RequestHandler):
         else:
             error_text = ''
             name = self.request.get('name')
-            phone_number  = self.request.get('phone_number')
+            email  = self.request.get('email')
 
-            if len(name) < 2:
-                error_text += 'Name should be at least 2 characters.\n'
-            if len(name) > 20:
-                error_text += 'Name should be no more than 20 characters.\n'
-            if len(name.split()) > 1:
-                error_text += 'Name should not have whitespace.\n'
-            if len(phone_number) > 10:
-                error_text += 'Description should be less than 4000 characters.\n'
-            for word in phone_number.split():
-                if len(word) > 10:
-                    error_text += 'Phone number too long. \n'
-                    break
+            # if len(name) < 2:
+            #     error_text += 'Name should be at least 2 characters.\n'
+            # if len(name) > 20:
+            #     error_text += 'Name should be no more than 20 characters.\n'
+            # if len(name.split()) > 1:
+            #     error_text += 'Name should not have whitespace.\n'
+            # if len(phone_number) > 10:
+            #     error_text += 'Description should be less than 4000 characters.\n'
+            # for word in phone_number.split():
+            #     if len(word) > 10:
+            #         error_text += 'Phone number too long. \n'
+            #         break
 
             values = get_user_data()
             values['name'] = name
-            values['description'] = phone_number
+            values['email'] = email
             if error_text:
                 values['errormsg'] = error_text
             else:
-                socialdataapp.save_profile(email, name, phone_number)
+                socialdataapp.save_profile(email, name)
                 values['successmsg'] = 'Everything worked out fine.'
 
 
