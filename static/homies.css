@@ -169,11 +169,11 @@ a:hover
 #menu
 {
   position: absolute;
-  width: 300px;
-  height: 700px;
+  width: 20%;
+  height: 90%;
   margin: -100px 0 0 -50px;
-  padding: 10px;
-  padding-top: 125px;
+  padding: 0%;
+  padding-top: 7%;
   
   background: #ededed;
   list-style-type: none;
@@ -188,7 +188,7 @@ a:hover
 
 #menu li
 {
-  padding: 10px 0;
+  padding: 3%;
   font-size: 22px;
 }
 
@@ -201,7 +201,7 @@ button {
   background-color: #9E60B3; 
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 1% 2%;
   float: right;
   margin-top: 0%;
   margin-right: 2%;
@@ -210,6 +210,8 @@ button {
   font-size: 16px; 
 
 }
+
+
 
 button:hover{
     color:#9E60B3;
@@ -220,10 +222,11 @@ button:hover{
   background-color: #FFA494; 
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 1% 1%;
   text-align: center;
   text-decoration: none;
-  margin-top:300px;
+  margin-top: 20%; 
+  margin-left: -7%;
   display: inline-block;
   font-size: 16px; 
 }
