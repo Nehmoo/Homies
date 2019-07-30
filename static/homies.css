@@ -4,42 +4,29 @@ h1 {
     color:#F7DC6F;
 }
 h2 {
-    
-    font-family: 'Pacifico';font-size: 40px;
-    color: white;
+    font-family: 'Pacifico'; font-size: 40px;
+    color: white ;
     display: inline;
     }
+
 body {
     background-color: #93FFD2;
     font-family: Roboto;
     text-align: center;
     font-size: 15px;
-<<<<<<< HEAD:static_files/homies.css
-=======
-    color: rgb(189, 92, 245);
->>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-  
-  /* make it look decent enough */
-  
-<<<<<<< HEAD
-    color: #cdcdcd;
-   
-=======
-   color: #B35544;
 
-    
->>>>>>> dd47b1e11e08b6f01c6ec635866ea24e515d80d3
-  
+    color: rgb(189, 92, 245);
+
+    background-size:cover;
+    margin: 0;
+    padding: 0;  /* make it look decent enough */
 }
+
 
 a
 {
   text-decoration: none;
   color: #232323;
-  
   transition: color 0.3s ease;
 }
 
@@ -48,46 +35,32 @@ a:hover
   color: tomato;
 }
 
+nav
+
 #menuToggle
 {
-<<<<<<< HEAD:static_files/homies.css
-  display: box;
-   
-  top: 50px;
-  left: 50px;
-  margin-left: 2%;
-  margin-top: 2%;
-  
-  z-index: 1;
-  
-  -webkit-user-select: none;
-  user-select: none;
-=======
-    padding-top: 10px;
-    padding-left: 10px;
     display: box;
     top: 50px;
     left: 50px;
-    
+    margin-left: 0%;
+    margin-top: 1%; 
     z-index: 1;
-    
     -webkit-user-select: none;
-    user-select: none;
->>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
+    user-select: nsdfdsf
+    padding-top: 10px;
+    padding-left: 10px;
+    /* display: box;
+    top: 50px;
+    left: 50px;  
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none; */
+
 }
 
 #menuToggle input
 {
-<<<<<<< HEAD:static_files/homies.css
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  
-  
-  cursor: pointer;
-  
-=======
+
     display: block;
     width: 40px;
     height: 32px;
@@ -95,11 +68,9 @@ a:hover
     top: -7px;
     left: -5px;
     cursor: pointer;
->>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
-  
-  -webkit-touch-callout: none;
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */ 
+    -webkit-touch-callout: none;
 }
 
 /*
@@ -112,18 +83,10 @@ a:hover
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-<<<<<<< HEAD
-  
-  background: #93FFD2;
-=======
-  background: #cdcdcd;
->>>>>>> d8a43258879e42f11c0dbb1b5483c7393a59a110
+  background: #9E60B3;
   border-radius: 3px;
-  
   z-index: 1;
-  
   transform-origin: 4px 0px;
-  
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               opacity 0.55s ease;
@@ -176,18 +139,16 @@ a:hover
 {
   position: absolute;
   width: 300px;
+  height: 700px;
   margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  
+  padding: 10px;
+  padding-top: 135px;
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
-  
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
-  
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
@@ -197,20 +158,40 @@ a:hover
   font-size: 22px;
 }
 
-/*
- * And let's slide it in from the left
- */
 #menuToggle input:checked ~ ul
 {
   transform: none;
 }
 
+button {
+  background-color: #9E60B3; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  float: right;
+  margin-top: 1%;
+  margin-right: 2%;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+}
 
+button:hover{
+    color:#9E60B3;
+    background-color: white;
+}
 
-
-
-
-
+#yeet {
+  background-color: #FFA494; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin-top:300px;
+  display: inline-block;
+  font-size: 16px; 
+}
 
 #successmsg{
     font-weight: bold;
@@ -220,4 +201,9 @@ a:hover
 #errormsg {
     font-weight: bold;
     color: red;
+}
+
+.bruh {
+    justify-content: space-between;
+    padding-top: 10px;    
 }
