@@ -5,4 +5,5 @@ class HomiesProfile(ndb.Model):
     email = ndb.StringProperty()
     last_update = ndb.DateTimeProperty(auto_now=True)
     phone_number = ndb.IntegerProperty()
+    user_contacts = {}
     
