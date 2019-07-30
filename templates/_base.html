@@ -2,10 +2,13 @@
     <head>
       <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
       <link rel="stylesheet" href="/i/homies.css">
+      <link rel="icon" href="https://www.clickwhisperer.com/wp-content/uploads/2013/02/Vine-logo.png">
     </head>
     <body bgcolor: #E89797>
         <nav role="navigation">
-            <div id="menuToggle" class="bruh">
+            <container>
+            <div class="bruh"><h2> Homies </h2></div>
+            <div id="menuToggle">
                 <input type="checkbox" />
                 <span></span>
                 <span></span>
@@ -16,13 +19,15 @@
                     <a href="/profile-edit" target="_blank"><li>Show me more</li></a>
                     <a href="/p/{{name}}"><li>View Profile</li></a>        
                 </ul>
+            </div>
+            <container>
         </nav>
             {% if login_url %}
-            <a href="{{login_url}}"><button type="button" class="bruh">Login</button></a>
-            {% else %}
-            <a href="{{logout_url}}"><button type="button">Logout</button></a>
-            {% endif %}
-            <center> <h2 class="bruh"> Homies </h2> </center>
+            <div class="bruh">
+                <a href="{{login_url}}"><button type="button">Login</button></a>
+                {% else %}
+                <a href="{{logout_url}}"><button type="button">Logout</button></a>
+                {% endif %}
             </div>
             {% if successmsg %}
         <div id="successmsg">{{successmsg}}</div>

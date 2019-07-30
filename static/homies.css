@@ -1,9 +1,11 @@
+
 h1 {
     font-size: 20px;
     text-align: center;
     color:#F7DC6F;
 }
 h2 {
+    position: absolute;
     font-family: 'Pacifico'; font-size: 40px;
     color: white ;
     display: inline;
@@ -45,8 +47,8 @@ nav
     margin-left: 0%;
     margin-top: 1%; 
     z-index: 1;
-    -webkit-user-select: none;
-    user-select: nsdfdsf
+    -webkito-user-select: none;
+    user-select: nsdfdsf;
     padding-top: 10px;
     padding-left: 10px;
     /* display: box;
@@ -138,17 +140,11 @@ nav
 #menu
 {
   position: absolute;
-  width: 20%;
-  height: 90%;
-  margin: -100px 0 0 -50px;
-<<<<<<< HEAD
-  padding: 0%;
-  padding-top: 7%;
-  
-=======
+  width: 300px;
+  height: 700px;
+  margin: -100px -50px;
   padding: 10px;
   padding-top: 135px;
->>>>>>> dc242a90aeaa36ffad6f931e69b545c46fe7aa47
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -160,7 +156,7 @@ nav
 
 #menu li
 {
-  padding: 3%;
+  padding: 10px 0;
   font-size: 22px;
 }
 
@@ -173,7 +169,7 @@ button {
   background-color: #9E60B3; 
   border: none;
   color: white;
-  padding: 1% 2%;
+  padding: 15px 32px;
   float: right;
   margin-top: 1%;
   margin-right: 2%;
@@ -181,8 +177,6 @@ button {
   display: inline-block;
   font-size: 16px; 
 }
-
-
 
 button:hover{
     color:#9E60B3;
@@ -193,11 +187,10 @@ button:hover{
   background-color: #FFA494; 
   border: none;
   color: white;
-  padding: 1% 1%;
+  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  margin-top: 20%; 
-  margin-left: -7%;
+  margin-top:300px;
   display: inline-block;
   font-size: 16px; 
 }
@@ -213,6 +206,6 @@ button:hover{
 }
 
 .bruh {
-    justify-content: space-between;
-    padding-top: 10px;    
+    text-align: center;  
+
 }
