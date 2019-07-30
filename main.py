@@ -2,7 +2,6 @@ import webapp2
 import logging
 import socialdataapp
 import os
-
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
 from google.appengine.api import mail
@@ -42,8 +41,10 @@ class MainHandler(webapp2.RequestHandler):
 
     def post(self):
         from_address = 'anything@yeetbruh.appspotmail.com'
-        mail.send_mail(from_address, 'nehemiah.omakor@gmail.com', 'Kisses', 'This is an example kiss, love you Nehmo')
-        self.response.out.write("The kiss has been sent")
+        mail.send_mail(from_address, 'nehemiah.omakor@gmail.com' , 'Kisses', 'This is an example kiss, love you Nehmo')
+        values = get_user_data()
+        values['message'] = 'The kiss has been sent.'
+        render_template(self, 'messagesent.html', values)
 
 
 class ProfileEditHandler(webapp2.RequestHandler):
@@ -55,7 +56,7 @@ class ProfileEditHandler(webapp2.RequestHandler):
             profile = socialdataapp.get_user_profile(get_user_email())
             if profile:
                 values['name'] = profile.name
-                values['description'] = profile.description
+                values['description'] = profile.phone_number
             render_template(self, 'profile-edit.html', values)
 
 
@@ -67,7 +68,7 @@ class ProfileSaveHandler(webapp2.RequestHandler):
         else:
             error_text = ''
             name = self.request.get('name')
-            description = self.request.get('description')
+            phone_number  = self.request.get('phone_number')
 
             if len(name) < 2:
                 error_text += 'Name should be at least 2 characters.\n'
@@ -75,20 +76,20 @@ class ProfileSaveHandler(webapp2.RequestHandler):
                 error_text += 'Name should be no more than 20 characters.\n'
             if len(name.split()) > 1:
                 error_text += 'Name should not have whitespace.\n'
-            if len(description) > 4000:
+            if len(phone_number) > 10:
                 error_text += 'Description should be less than 4000 characters.\n'
-            for word in description.split():
-                if len(word) > 50:
-                    error_text += 'Description contains words that are too damned long. \n'
+            for word in phone_number.split():
+                if len(word) > 10:
+                    error_text += 'Phone number too long. \n'
                     break
 
             values = get_user_data()
             values['name'] = name
-            values['description'] = description
+            values['description'] = phone_number
             if error_text:
                 values['errormsg'] = error_text
             else:
-                socialdataapp.save_profile(email, name, description)
+                socialdataapp.save_profile(email, name, phone_number)
                 values['successmsg'] = 'Everything worked out fine.'
 
 
@@ -123,8 +124,6 @@ class FormHandler(webapp2.RequestHandler):
           'message': message,
           'email': email
         }
-
-
 
 app = webapp2.WSGIApplication([
     ('/send-contact', FormHandler),
