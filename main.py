@@ -38,13 +38,12 @@ class MainHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
         render_template(self, 'mainpageapp.html', values)
+        
 
     def post(self):
-        from_address = 'contact@cs-chat-example.appspotmail.com'
-        subject = 'Contact from the server'
-        body = 'Message from the server:\n\nIT is working.'
-        mail.send_mail(from_address, 'nehemiah.omakor@gmail.com', subject, body)
-        self.response.out.write("Send Email")
+        from_address = 'anything@yeetbruh.appspotmail.com'
+        mail.send_mail(from_address, 'nehemiah.omakor@gmail.com', 'Kisses', 'This is an example kiss, love you Nehmo')
+        self.response.out.write("The kiss has been sent")
 
 
 class ProfileEditHandler(webapp2.RequestHandler):
@@ -125,7 +124,6 @@ class FormHandler(webapp2.RequestHandler):
           'email': email
         }
 
-        # render_template(self, 'contact.html', params
 
 
 app = webapp2.WSGIApplication([
