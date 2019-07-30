@@ -5,35 +5,34 @@ h1 {
 }
 h2 {
     
-    font-family: 'Pacifico';font-size: 40px;
-    color: white;
+    font-family: 'Pacifico'; font-size: 40px;
+    color: white ;
     display: inline;
     }
+
 body {
     background-color: #93FFD2;
     font-family: Roboto;
     text-align: center;
     font-size: 15px;
-<<<<<<< HEAD:static_files/homies.css
-=======
+
     color: rgb(189, 92, 245);
->>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
-    background-size: cover;
+
+    background-size:cover;
     margin: 0;
     padding: 0;
   
   /* make it look decent enough */
   
-<<<<<<< HEAD
+
     color: #cdcdcd;
    
-=======
-   color: #B35544;
 
-    
->>>>>>> dd47b1e11e08b6f01c6ec635866ea24e515d80d3
+   color: #B35544;
   
+
 }
+
 
 a
 {
@@ -50,19 +49,19 @@ a:hover
 
 #menuToggle
 {
-<<<<<<< HEAD:static_files/homies.css
+
   display: box;
    
   top: 50px;
   left: 50px;
-  margin-left: 2%;
-  margin-top: 2%;
+  margin-left: 0%;
+  margin-top: 0%;
   
   z-index: 1;
   
   -webkit-user-select: none;
   user-select: none;
-=======
+
     padding-top: 10px;
     padding-left: 10px;
     display: box;
@@ -73,12 +72,12 @@ a:hover
     
     -webkit-user-select: none;
     user-select: none;
->>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
+
 }
 
 #menuToggle input
 {
-<<<<<<< HEAD:static_files/homies.css
+
   display: block;
   width: 40px;
   height: 32px;
@@ -87,7 +86,7 @@ a:hover
   
   cursor: pointer;
   
-=======
+
     display: block;
     width: 40px;
     height: 32px;
@@ -95,7 +94,7 @@ a:hover
     top: -7px;
     left: -5px;
     cursor: pointer;
->>>>>>> 9708b93b217883c4e1d7ff4a6878cc134f119002:static/homies.css
+
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
   
@@ -112,7 +111,7 @@ a:hover
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: #cdcdcd;
+  background: #9E60B3;
   border-radius: 3px;
   
   z-index: 1;
@@ -171,8 +170,9 @@ a:hover
 {
   position: absolute;
   width: 300px;
+  height: 700px;
   margin: -100px 0 0 -50px;
-  padding: 50px;
+  padding: 10px;
   padding-top: 125px;
   
   background: #ededed;
@@ -192,12 +192,40 @@ a:hover
   font-size: 22px;
 }
 
-/*
- * And let's slide it in from the left
- */
 #menuToggle input:checked ~ ul
 {
   transform: none;
+}
+
+button {
+  background-color: #9E60B3; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  float: right;
+  margin-top: 0%;
+  margin-right: 2%;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+
+}
+
+button:hover{
+    color:#9E60B3;
+    background-color: white;
+}
+
+#yeet {
+  background-color: #FFA494; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin-top:300px;
+  display: inline-block;
+  font-size: 16px; 
 }
 
 
