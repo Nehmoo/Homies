@@ -38,12 +38,14 @@ class MainHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
         render_template(self, 'mainpageapp.html', values)
+        #render_template(self, 'index.html')
 
     def post(self):
-        from_address = 'contact@cs-chat-example.appspotmail.com'
-        subject = 'Contact from the server'
-        body = 'Message from the server:\n\nIT is working.'
-        mail.send_mail(from_address, 'nehemiah.omakor@gmail.com', subject, body)
+        # from_address = 'nehemiah.omakor@gmail.com'
+        # subject = 'Contact from the server'
+        # body = 'Message from the server:\n\nIT is working.'
+        from_address = 'anything@yeetbruh.appspotmail.com'
+        mail.send_mail(from_address, 'nehemiah.omakor@gmail.com', 'something', 'the thing is working')
         self.response.out.write("Send Email")
 
 

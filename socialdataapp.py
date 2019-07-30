@@ -6,7 +6,7 @@ def save_profile(email, name, phone_number):
         p.name = name
         p.phone_number = phone_number
     else:
-        p = HomiesProfile(email=email, name=name, phone_number=phone_number)
+        p = HomiesProfile(email=email, name=name, phone_number=int(phone_number))
     p.put()
 
 def get_user_profile(email):
