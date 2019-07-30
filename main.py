@@ -70,20 +70,6 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             error_text = ''
             name = self.request.get('name')
             email  = self.request.get('email')
-
-            # if len(name) < 2:
-            #     error_text += 'Name should be at least 2 characters.\n'
-            # if len(name) > 20:
-            #     error_text += 'Name should be no more than 20 characters.\n'
-            # if len(name.split()) > 1:
-            #     error_text += 'Name should not have whitespace.\n'
-            # if len(phone_number) > 10:
-            #     error_text += 'Description should be less than 4000 characters.\n'
-            # for word in phone_number.split():
-            #     if len(word) > 10:
-            #         error_text += 'Phone number too long. \n'
-            #         break
-
             values = get_user_data()
             values['name'] = name
             values['email'] = email
@@ -113,6 +99,12 @@ class ProfileListHandler(webapp2.RequestHandler):
         values['profiles'] = profiles
         render_template(self, 'profile-list.html', values)
 
+class AddHomieHandler(webapp2.RequestHandler):
+    def post(self):
+        values = 
+        render_template(self, 'new-contacts.html',values)
+
+
 
 class FormHandler(webapp2.RequestHandler):
     def post(self):
@@ -131,6 +123,7 @@ app = webapp2.WSGIApplication([
     ('/profile-list', ProfileListHandler),
     ('/p/(.*)', ProfileViewHandler),
     ('/profile-save', ProfileSaveHandler),
+    ('/new-contacts', AddHomieHandler),
     ('/profile-edit', ProfileEditHandler),
     ('.*', MainHandler),
 ])
