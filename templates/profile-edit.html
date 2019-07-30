@@ -1,12 +1,34 @@
 {% extends "_base.html" %}
 {% block content %}
-<img src="https://pixfeeds.com/images/dogs/1280-495810933-purebred-dog.jpg">
 <form method="post" action="/profile-save">
-    Name: <br>
-    <input type="text" name="name"><br><br>
-    Profile:<br>
-    <textarea name="description" rows="16">{{description}}</textarea><br><br>
-    <input type="submit">
+<div class="container">
+  <form action="action_page.php">
+<br>
+<br>
+<br>
+<br>
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+<br>
+<br>
+<br>
+<br>
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+<br><br>
+<label for="subject">Number</label>
+    <textarea id="subject" name="subject" placeholder="Enter Number" ></textarea>
+<br><br>
+<br> <br>
+    <label for="subject">Email</label>
+    <textarea id="subject" name="subject" placeholder="Enter email" ></textarea>
+<br><br>
+
+
+    <input type="submit" value="Submit">
+
+
+</div>
 </form>
 
 {% endblock %}
