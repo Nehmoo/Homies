@@ -1,9 +1,11 @@
+
 h1 {
     font-size: 20px;
     text-align: center;
     color:#F7DC6F;
 }
 h2 {
+    position: absolute;
     font-family: 'Pacifico'; font-size: 40px;
     color: white ;
     display: inline;
@@ -45,8 +47,8 @@ nav
     margin-left: 0%;
     margin-top: 1%; 
     z-index: 1;
-    -webkit-user-select: none;
-    user-select: nsdfdsf
+    -webkito-user-select: none;
+    user-select: nsdfdsf;
     padding-top: 10px;
     padding-left: 10px;
     /* display: box;
@@ -140,7 +142,7 @@ nav
   position: absolute;
   width: 300px;
   height: 700px;
-  margin: -100px 0 0 -50px;
+  margin: -100px -50px;
   padding: 10px;
   padding-top: 135px;
   background: #ededed;
@@ -204,6 +206,6 @@ button:hover{
 }
 
 .bruh {
-    justify-content: space-between;
-    padding-top: 10px;    
+    text-align: center;  
+
 }
