@@ -43,7 +43,7 @@ class MainHandler(webapp2.RequestHandler):
     def post(self):
         from_address = 'anything@yeetbruh.appspotmail.com'
         mail.send_mail(from_address, 'nehemiah.omakor@gmail.com', 'Kisses', 'This is an example kiss, love you Nehmo')
-        self.response.out.write("Send Email")
+        self.response.out.write("The kiss has been sent")
 
 
 class ProfileEditHandler(webapp2.RequestHandler):
