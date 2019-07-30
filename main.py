@@ -126,6 +126,7 @@ class FormHandler(webapp2.RequestHandler):
           'email': email
         }
 
+
 app = webapp2.WSGIApplication([
     ('/send-contact', FormHandler),
     ('/profile-list', ProfileListHandler),
