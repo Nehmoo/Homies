@@ -27,3 +27,11 @@ def get_recent_profiles():
     q = HomiesProfile.query().order(-HomiesProfile.last_update)
     return q.fetch(50)
 
+
+def get_contacts_for_user(email):
+    profile = get_user_profile(email)
+    return profile.user_contacts
+    
+    
+
+    

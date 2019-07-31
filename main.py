@@ -1,5 +1,4 @@
 import webapp2
-import logging
 import socialdataapp
 import os
 from google.appengine.ext.webapp import template
@@ -61,6 +60,18 @@ class ProfileEditHandler(webapp2.RequestHandler):
             render_template(self, 'profile-edit.html', values)
 
 
+class ListContactsHandler(webapp2.RequestHandler):
+    def get(self):
+        email = get_user_email()
+        if email:
+            contacts = socialdataapp.get_contacts_for_user(email)
+            values = get_user_data()
+            values['contacts'] = contacts
+            render_template(self, 'contact-list.html', values)
+        else:
+            self.response.out.write('login, homie')
+
+
 class ProfileSaveHandler(webapp2.RequestHandler):
     def post(self):
         email = get_user_email()
@@ -74,7 +85,7 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             values = get_user_data()
             values['name'] = name
             values['email'] = email
-            values['phonenumber'] =int( phone_number)
+            values['phonenumber'] =int(phone_number)
             if error_text:
                 values['errormsg'] = error_text
             else:
@@ -100,9 +111,6 @@ class ProfileListHandler(webapp2.RequestHandler):
         values = get_user_data()
         values['profiles'] = profiles
         render_template(self, 'profile-list.html', values)
-
-
-
 
 
 class FormHandler(webapp2.RequestHandler):
