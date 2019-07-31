@@ -70,15 +70,17 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             error_text = ''
             name = self.request.get('name')
             email  = self.request.get('email')
+            phone_number = self.request.get('phonenumber')
             values = get_user_data()
             values['name'] = name
             values['email'] = email
+            values['phonenumber'] =int( phone_number)
             if error_text:
                 values['errormsg'] = error_text
             else:
-                socialdataapp.save_profile(email, name)
+                socialdataapp.save_profile(email, name, phone_number)
                 values['successmsg'] = 'Everything worked out fine.'
-
+            render_template(self, 'profile-save.html', values)
 
 class ProfileViewHandler(webapp2.RequestHandler):
     def get(self, profilename):
@@ -99,10 +101,7 @@ class ProfileListHandler(webapp2.RequestHandler):
         values['profiles'] = profiles
         render_template(self, 'profile-list.html', values)
 
-class AddHomieHandler(webapp2.RequestHandler):
-    def post(self):
-        values = 
-        render_template(self, 'new-contacts.html',values)
+
 
 
 
@@ -118,13 +117,12 @@ class FormHandler(webapp2.RequestHandler):
           'email': email
         }
 
-
 app = webapp2.WSGIApplication([
     ('/send-contact', FormHandler),
     ('/profile-list', ProfileListHandler),
     ('/p/(.*)', ProfileViewHandler),
     ('/profile-save', ProfileSaveHandler),
-    ('/new-contacts', AddHomieHandler),
+   # ('/new-contacts', AddHomieHandler),
     ('/profile-edit', ProfileEditHandler),
     ('.*', MainHandler),
 ])
