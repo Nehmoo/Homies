@@ -4,13 +4,11 @@ h1 {
     text-align: center;
     color:#F7DC6F;
 }
-h2 {
-    position: absolute;
+.homie {
     font-family: 'Pacifico'; font-size: 40px;
     color: white ;
-    display: inline;
+    margin: 0;
     }
-
 body {
     background-color: #93FFD2;
     font-family: Roboto;
@@ -37,7 +35,10 @@ a:hover
   color: tomato;
 }
 
-nav
+.navigation{
+    display: flex;
+    justify-content: space-between;
+}
 
 #menuToggle
 {

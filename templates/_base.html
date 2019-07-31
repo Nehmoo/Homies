@@ -5,9 +5,7 @@
       <link rel="icon" href="https://www.clickwhisperer.com/wp-content/uploads/2013/02/Vine-logo.png">
     </head>
     <body bgcolor: #E89797>
-        <nav role="navigation">
-            <container>
-            <div class="bruh"><h2> Homies </h2></div>
+        <nav role="navigation" class="navigation">
             <div id="menuToggle">
                 <input type="checkbox" />
                 <span></span>
@@ -20,15 +18,15 @@
                     <a href="/p/{{name}}"><li>View Profile</li></a>        
                 </ul>
             </div>
-            <container>
-        </nav>
-            {% if login_url %}
+            <a class="bruh" href="/"><h2 class="homie"> Homies </h2></a>
             <div class="bruh">
+                {% if login_url %}    
                 <a href="{{login_url}}"><button type="button">Login</button></a>
                 {% else %}
                 <a href="{{logout_url}}"><button type="button">Logout</button></a>
                 {% endif %}
             </div>
+        </nav>
             {% if successmsg %}
         <div id="successmsg">{{successmsg}}</div>
             {% endif %}
