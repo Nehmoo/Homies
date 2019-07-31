@@ -130,8 +130,6 @@ class FormHandler(webapp2.RequestHandler):
           'email': email
         }
 
-        print params
-
 
 app = webapp2.WSGIApplication([
     ('/send-contact', FormHandler),
