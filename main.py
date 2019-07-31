@@ -37,7 +37,6 @@ class MainHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
         render_template(self, 'mainpageapp.html', values)
-        
 
     def post(self):
         from_address = 'anything@yeetbruh.appspotmail.com'
@@ -69,7 +68,7 @@ class ProfileSaveHandler(webapp2.RequestHandler):
         else:
             error_text = ''
             name = self.request.get('name')
-            phone_number  = self.request.get('phone_number')
+            phone_number = self.request.get('phone_number')
 
             if len(name) < 2:
                 error_text += 'Name should be at least 2 characters.\n'
@@ -125,6 +124,7 @@ class FormHandler(webapp2.RequestHandler):
           'message': message,
           'email': email
         }
+
 
 app = webapp2.WSGIApplication([
     ('/send-contact', FormHandler),
