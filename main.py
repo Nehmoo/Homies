@@ -69,7 +69,6 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             error_text = ''
             name = self.request.get('name')
             phone_number = self.request.get('phone_number')
-
             if len(name) < 2:
                 error_text += 'Name should be at least 2 characters.\n'
             if len(name) > 20:
@@ -82,15 +81,18 @@ class ProfileSaveHandler(webapp2.RequestHandler):
                 if len(word) > 10:
                     error_text += 'Phone number too long. \n'
                     break
-
+            email = self.request.get('email')
+            phone_number = self.request.get('phonenumber')
             values = get_user_data()
             values['name'] = name
-            values['description'] = phone_number
+            values['email'] = email
+            values['phonenumber'] = int( phone_number)
             if error_text:
                 values['errormsg'] = error_text
             else:
                 socialdataapp.save_profile(email, name, phone_number)
                 values['successmsg'] = 'Everything worked out fine.'
+            render_template(self, 'profile-save.html', values)
 
 
 class ProfileViewHandler(webapp2.RequestHandler):
@@ -113,6 +115,9 @@ class ProfileListHandler(webapp2.RequestHandler):
         render_template(self, 'profile-list.html', values)
 
 
+
+
+
 class FormHandler(webapp2.RequestHandler):
     def post(self):
         name = self.request.get('name')
@@ -131,6 +136,7 @@ app = webapp2.WSGIApplication([
     ('/profile-list', ProfileListHandler),
     ('/p/(.*)', ProfileViewHandler),
     ('/profile-save', ProfileSaveHandler),
+   # ('/new-contacts', AddHomieHandler),
     ('/profile-edit', ProfileEditHandler),
     ('.*', MainHandler),
 ])
