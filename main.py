@@ -37,7 +37,6 @@ class MainHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
         render_template(self, 'mainpageapp.html', values)
-        
 
     def post(self):
         from_address = 'anything@yeetbruh.appspotmail.com'
@@ -69,18 +68,32 @@ class ProfileSaveHandler(webapp2.RequestHandler):
         else:
             error_text = ''
             name = self.request.get('name')
-            email  = self.request.get('email')
+            phone_number = self.request.get('phone_number')
+            if len(name) < 2:
+                error_text += 'Name should be at least 2 characters.\n'
+            if len(name) > 20:
+                error_text += 'Name should be no more than 20 characters.\n'
+            if len(name.split()) > 1:
+                error_text += 'Name should not have whitespace.\n'
+            if len(phone_number) > 10:
+                error_text += 'Description should be less than 4000 characters.\n'
+            for word in phone_number.split():
+                if len(word) > 10:
+                    error_text += 'Phone number too long. \n'
+                    break
+            email = self.request.get('email')
             phone_number = self.request.get('phonenumber')
             values = get_user_data()
             values['name'] = name
             values['email'] = email
-            values['phonenumber'] =int( phone_number)
+            values['phonenumber'] = int( phone_number)
             if error_text:
                 values['errormsg'] = error_text
             else:
                 socialdataapp.save_profile(email, name, phone_number)
                 values['successmsg'] = 'Everything worked out fine.'
             render_template(self, 'profile-save.html', values)
+
 
 class ProfileViewHandler(webapp2.RequestHandler):
     def get(self, profilename):
@@ -116,6 +129,9 @@ class FormHandler(webapp2.RequestHandler):
           'message': message,
           'email': email
         }
+
+        print params
+
 
 app = webapp2.WSGIApplication([
     ('/send-contact', FormHandler),
