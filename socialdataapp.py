@@ -9,6 +9,10 @@ def save_profile(email, name, phone_number):
         p = HomiesProfile(email=email, name=name, phone_number=int(phone_number))
     p.put()
 
+def get_contacts_for_user(email):
+    profile = get_user_profile(email)
+    return profile.user_contacts
+
 def get_user_profile(email):
     q = HomiesProfile.query(HomiesProfile.email == email)
     results = q.fetch(1)
@@ -26,11 +30,6 @@ def get_profile_by_name(name):
 def get_recent_profiles():
     q = HomiesProfile.query().order(-HomiesProfile.last_update)
     return q.fetch(50)
-
-
-def get_contacts_for_user(email):
-    profile = get_user_profile(email)
-    return profile.user_contacts
     
     
 
