@@ -1,11 +1,6 @@
 from socialmodelapp import HomiesProfile
 from socialmodelapp import ContactProfile
 
-<<<<<<< HEAD
-def save_profile(email):
-    p = get_user_profile(email)
-    if not p:
-=======
 
 def ensure_profile(email):
     if not get_user_profile(email):
@@ -18,23 +13,17 @@ def save_profile(email):
     if p:
         p.email = email
     else:
->>>>>>> 583e810c4b82cc346dd1e10ee7905ec2d229484f
         p = HomiesProfile(email=email)
     p.put()
 
-def save_contact(user_email, contact_email, contact_name, contact_number):
-<<<<<<< HEAD
-    p = get_user_profile(user_email) 
-    c = ContactProfile(email = contact_email, name = contact_name, phone_number = int(contact_number))
-    p.user_contacts.append(c.put())
 
-=======
+def save_contact(user_email, contact_email, contact_name, contact_number):
     p = get_user_profile(user_email) #Checks if the user is in 
     if p:
         c = ContactProfile(email = contact_email, name = contact_name, phone_number = int(contact_number))
         p.user_contacts.append(c.put())
         p.put()
->>>>>>> 583e810c4b82cc346dd1e10ee7905ec2d229484f
+
 
 def get_user_profile(email):
     q = HomiesProfile.query(HomiesProfile.email == email)
@@ -42,7 +31,6 @@ def get_user_profile(email):
     for profile in results:
         return profile
     return None
-
 
 
 def get_profile_by_name(name):
@@ -76,11 +64,6 @@ def get_contact(name):
     return contacts
 
 
-
 def get_recent_profiles():
     q = HomiesProfile.query().order(-HomiesProfile.last_update)
     return q.fetch(50)
-    
-    
-
-    
