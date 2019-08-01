@@ -40,6 +40,7 @@ def get_profile_by_name(name):
         return profile
     return None #ask why this is returning nothing
 
+
 def get_contact(name):
     c = ContactProfile.query(ContactProfile.name == name).fetch(1)
     for contact in c:
