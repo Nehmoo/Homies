@@ -5,7 +5,7 @@ import os
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
 from google.appengine.api import mail
-
+#rom google.appengine.api import names
 
 def render_template(handler, file_name, template_values):
     path = os.path.join(os.path.dirname(__file__), 'templates/', file_name)
@@ -19,6 +19,12 @@ def get_user_email():
     else:
         return None
 
+# def get_user_name():
+#     user = names.get_current_user()
+#     if user:
+#         return user.names()
+#     else: 
+#         return None
 
 def get_user_data():
     values = {}
@@ -38,12 +44,14 @@ class MainHandler(webapp2.RequestHandler):
                 values['name'] = profile.name
                 values['user_contacts']= profile.user_contacts
             else:
-                create_user_profile(get_user_email())
+                profile = socialdataapp.save_profile(get_user_email())
                 
-        render_template(self, 'mainpageapp.html', values)
+                
+            render_template(self, 'mainpageapp.html', values)
 
     def post(self):
         from_address = 'anything@yeetbruh.appspotmail.com'
+
         email = self.request.get('email')
         mail.send_mail(from_address, email, 'Kisses', 'Your homie has just sent you a kiss!')
         values = get_user_data()
@@ -60,8 +68,7 @@ class ProfileEditHandler(webapp2.RequestHandler):
             profile = socialdataapp.get_user_profile(get_user_email())
             if profile:
                 values['name'] = profile.name
-                values['description'] = profile.phone_number
-          
+                
                 render_template(self, 'profile-edit.html', values)
 
 
