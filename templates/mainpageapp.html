@@ -1,9 +1,27 @@
 {% extends "_base.html" %}
 {% block content %}
 
-{{user_contacts}}
+<h1> Contacts </h1>
+<div style="
+height:100px;
+width:140px;
+overflow:auto;
+background-color:yellowgreen;
+color:white;
+scrollbar-base-color:gold;
+font-family:sans-serif;
+padding:10px;">
+{% for contact in user_contacts %}
+  {{contact.name}}
+<form method= "post" action="/">
+<input type="submit" value="Smooch via email">
+<input type="hidden" name="email" value="{{contact.email}}">
+<input type= "submit" value="smooch via text">
+</form>
+   </strong> <br> <br>
+{% endfor %}
 <br>
-
+</div>
 <h3>Enter an Email:</h3>
 <form method="post" action="/">
     <input type="text" name="email"> 

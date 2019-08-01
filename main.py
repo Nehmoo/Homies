@@ -1,5 +1,4 @@
 import webapp2
-import logging
 import socialdataapp
 import os
 from google.appengine.ext.webapp import template
@@ -10,6 +9,7 @@ from google.appengine.api import mail
 def render_template(handler, file_name, template_values):
     path = os.path.join(os.path.dirname(__file__), 'templates/', file_name)
     handler.response.out.write(template.render(path, template_values))
+
 
 def get_user_phone():
     user = users.get_current_user()
@@ -22,6 +22,7 @@ def get_user_phone():
 def get_user_email():
     user = users.get_current_user()
     if user:
+        socialdataapp.ensure_profile(user.email())
         return user.email()
     else:
         return None
@@ -48,18 +49,27 @@ class MainHandler(webapp2.RequestHandler):
             profile = socialdataapp.get_user_profile(get_user_email())
             if profile:
                 values['name'] = profile.name
-                values['user_contacts'] = profile.user_contacts
+                contacts = []
+                for key in profile.user_contacts:
+                    contacts.append(key.get())
+                values['user_contacts'] = contacts
             else:
-               # create_user_profile(get_user_email())
-                render_template(self, 'mainpageapp.html', values)
+                profile = socialdataapp.ensure_profile(get_user_email())
+                socialdataapp.create_user_profile(get_user_email())
+        render_template(self, 'mainpageapp.html', values)
 
     def post(self):
+        print "Entering POST for MainHandler"
         from_address = 'anything@yeetbruh.appspotmail.com'
         email = self.request.get('email')
+        print "Email: " + email
         mail.send_mail(from_address, email, 'Kisses', 'Your homie has just sent you a kiss!')
         values = get_user_data()
         values['message'] = 'The kiss has been sent.'
         render_template(self, 'messagesent.html', values)
+        print "Leaving POST for MainHandler"
+
+
 
 
 class TextHandler(webapp2.RequestHandler):
@@ -99,7 +109,30 @@ class ProfileEditHandler(webapp2.RequestHandler):
                 render_template(self, 'profile-edit.html', values)
 
 
-class ProfileSaveHandler(webapp2.RequestHandler):
+class ListContactHandler(webapp2.RequestHandler):
+    def get(self):
+        email = get_user_email()
+        if email:
+            contacts = socialdataapp.get_contact(email)
+            values = get_user_data()
+            values['contacts'] = contacts
+            render_template(self, 'contact-list.html', values)
+        else:
+            self.response.out.write('login, homie')
+
+# class ContactSaveHandler(webapp2.RequestHandler):
+#     def post(self):
+#         userEmail = get_user_email()
+#         if not email:
+#             self.redirect('/')
+#         else:
+#             name = self.request.get('name')
+#             phone_number = self.request.get('phone_number')
+#             email = self.request.get('email')
+#             values = 
+
+
+class ContactSaveHandler(webapp2.RequestHandler):
     def post(self):
         email = get_user_email()
         if not email:
@@ -108,20 +141,7 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             error_text = ''
             name = self.request.get('name')
             phone_number = self.request.get('phone_number')
-            if len(name) < 2:
-                error_text += 'Name should be at least 2 characters.\n'
-            if len(name) > 20:
-                error_text += 'Name should be no more than 20 characters.\n'
-            if len(name.split()) > 1:
-                error_text += 'Name should not have whitespace.\n'
-            if len(phone_number) > 10:
-                error_text += 'Description should be less than 4000 characters.\n'
-            for word in phone_number.split():
-                if len(word) > 10:
-                    error_text += 'Phone number too long. \n'
-                    break
-            email = self.request.get('email')
-            phone_number = self.request.get('phonenumber')
+            contact_email = self.request.get('email')
             values = get_user_data()
             values['name'] = name
             values['email'] = email
@@ -129,10 +149,9 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             if error_text:
                 values['errormsg'] = error_text
             else:
-                socialdataapp.save_contact(get_user_email(), email, name, phone_number)
+                socialdataapp.save_contact(email, contact_email, name, int(phone_number)) 
                 values['successmsg'] = 'Everything worked out fine.'
             render_template(self, 'profile-save.html', values)
-
 
 class ProfileViewHandler(webapp2.RequestHandler):
     def get(self, profilename):
@@ -159,21 +178,27 @@ class FormHandler(webapp2.RequestHandler):
         name = self.request.get('name')
         message = self.request.get('message')
         email = self.request.get('email')
-
         params = {
           'name': name,
           'message': message,
-          'email': email
-        }
+          'email': email}
 
+
+class NotFoundHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.out.write('that path is not mapped.')
+    def post(self):
+        self.response.out.write('that path is not mapped.')
 
 app = webapp2.WSGIApplication([
     ('/homietext', TextHandler),
     ('/send-contact', FormHandler),
     ('/profile-list', ProfileListHandler),
+    ('/contact-list', ListContactHandler),
     ('/p/(.*)', ProfileViewHandler),
-    ('/profile-save', ProfileSaveHandler),
-   # ('/new-contacts', AddHomieHandler),
+    ('/profile-save', ContactSaveHandler),
+    ('/new-contacts', ListContactHandler),
     ('/profile-edit', ProfileEditHandler),
-    ('.*', MainHandler),
+    ('/', MainHandler),
+    ('.*', NotFoundHandler),
 ])
