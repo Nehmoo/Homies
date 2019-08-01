@@ -1,5 +1,11 @@
 {% extends "_base.html" %}
 {% block content %}
+
+{% for contact in contacts %}
+email: {{contact.email}}<br>
+name: {{contact.name}}<br>
+phone: {{contact.phone_number}}<br><br>
+{% endfor %}
 <form method="post" action="/profile-save">
 <div class="container">
   <form action="action_page.php">
@@ -7,15 +13,15 @@
 <br>
 <br>
 <br>
-    <label for="name">Name</label>
+    <label for="name">Contact Name</label>
     <input type="text" id="name" name="name" placeholder="Your name..">
 <br>
 <br><br>
-<label for="subject">Number</label>
-    <textarea id="subject" name="phone_number" placeholder="Enter Number" ></textarea>
+<label for="subject">Contact Number</label>
+    <textarea id="subject" name="phonenumber" placeholder="Enter Number" ></textarea>
 <br><br>
 <br> <br>
-    <label for="subject">Email</label>
+    <label for="subject">Contact Email</label>
     <textarea id="subject" name="email" placeholder="Enter email" ></textarea>
 <br><br>
 
