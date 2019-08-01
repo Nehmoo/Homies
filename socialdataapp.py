@@ -1,6 +1,7 @@
 from socialmodelapp import HomiesProfile
 from socialmodelapp import ContactProfile
 
+
 def save_profile(email, name, phone_number):
     p = get_user_profile(email)
     if p:
@@ -10,13 +11,12 @@ def save_profile(email, name, phone_number):
         p = HomiesProfile(email=email, name=name, phone_number=int(phone_number))
     p.put()
 
+
 def save_contact(user_email, contact_email, contact_name, contact_number):
-    p = get_user_profile(user_email) 
+    p = get_user_profile(user_email)
     c = ContactProfile(email = contact_email, name = contact_name, phone_number = int(contact_number))
     p.user_contacts.append(c.put())
 
-def create_user_profile(email):
-    c = 
 
 def get_user_profile(email):
     q = HomiesProfile.query(HomiesProfile.email == email)
@@ -25,6 +25,7 @@ def get_user_profile(email):
         return profile
     return None
 
+
 def get_profile_by_name(name):
     q = HomiesProfile.query(HomiesProfile.name == name)
     results = q.fetch(1)
@@ -32,7 +33,7 @@ def get_profile_by_name(name):
         return profile
     return None
 
+
 def get_recent_profiles():
     q = HomiesProfile.query().order(-HomiesProfile.last_update)
     return q.fetch(50)
-

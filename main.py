@@ -11,6 +11,13 @@ def render_template(handler, file_name, template_values):
     path = os.path.join(os.path.dirname(__file__), 'templates/', file_name)
     handler.response.out.write(template.render(path, template_values))
 
+def get_user_phone():
+    user = users.get_current_user()
+    if user:
+        return user.phone()
+    else:
+        return None
+
 
 def get_user_email():
     user = users.get_current_user()
@@ -29,23 +36,51 @@ def get_user_data():
     return values
 
 
+# class TimeHandler(webapp2.RequestHandler):
+#     def get(self):
+#         date
+
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         values = get_user_data()
         if get_user_email():
             profile = socialdataapp.get_user_profile(get_user_email())
-            if profile: 
+            if profile:
                 values['name'] = profile.name
-                values['user_contacts']= profile.user_contacts
+                values['user_contacts'] = profile.user_contacts
             else:
-                create_user_profile(get_user_email())
-                
-        render_template(self, 'mainpageapp.html', values)
+               # create_user_profile(get_user_email())
+                render_template(self, 'mainpageapp.html', values)
 
     def post(self):
         from_address = 'anything@yeetbruh.appspotmail.com'
         email = self.request.get('email')
         mail.send_mail(from_address, email, 'Kisses', 'Your homie has just sent you a kiss!')
+        values = get_user_data()
+        values['message'] = 'The kiss has been sent.'
+        render_template(self, 'messagesent.html', values)
+
+
+class TextHandler(webapp2.RequestHandler):
+    def get(self):
+        values = get_user_data()
+        render_template(self, 'homietext.html', values)
+
+    def post(self):
+        from_address = 'anything@yeetbruh.appspotmail.com'
+        phone = self.request.get('phone')
+        print(phone)
+        mail.send_mail(from_address, str(phone) + '@messaging.sprintpcs.com', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, str(phone) + '@vtext.com', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, str(phone) + '@txt.att.net', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, str(phone) + '@tmomail.net', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, str(phone) + '@mymetropcs.com', 'Kisses', 'Your homie has just sent you a kiss!')
+        # mail.send_mail(from_address + '@messaging.sprintpcs.com', phone, 'Kisses', 'Your homie has just sent you a kiss!')
+        # mail.send_mail(from_address + '@vtext.com', phone, 'Kisses', 'Your homie has just sent you a kiss!')
+        # mail.send_mail(from_address + '@txt.att.net', phone, 'Kisses', 'Your homie has just sent you a kiss!')
+        # mail.send_mail(from_address + '@tmomail.net', phone, 'Kisses', 'Your homie has just sent you a kiss!')
+        # mail.send_mail(from_address + '@mymetropcs.com', phone, 'Kisses', 'Your homie has just sent you a kiss!')
         values = get_user_data()
         values['message'] = 'The kiss has been sent.'
         render_template(self, 'messagesent.html', values)
@@ -61,7 +96,6 @@ class ProfileEditHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
                 values['description'] = profile.phone_number
-          
                 render_template(self, 'profile-edit.html', values)
 
 
@@ -120,9 +154,6 @@ class ProfileListHandler(webapp2.RequestHandler):
         render_template(self, 'profile-list.html', values)
 
 
-
-
-
 class FormHandler(webapp2.RequestHandler):
     def post(self):
         name = self.request.get('name')
@@ -137,6 +168,7 @@ class FormHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
+    ('/homietext', TextHandler),
     ('/send-contact', FormHandler),
     ('/profile-list', ProfileListHandler),
     ('/p/(.*)', ProfileViewHandler),
