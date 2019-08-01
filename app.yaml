@@ -8,3 +8,7 @@ handlers:
   static_dir: static
 - url: /.*
   script: main.app
+
+- url: /tasks/.*
+  script: crontasks.app
+  login: admin

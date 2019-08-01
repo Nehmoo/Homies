@@ -86,7 +86,7 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             values = get_user_data()
             values['name'] = name
             values['email'] = email
-            values['phonenumber'] = int( phone_number)
+            values['phonenumber'] = int(phone_number)
             if error_text:
                 values['errormsg'] = error_text
             else:

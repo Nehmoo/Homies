@@ -22,6 +22,11 @@ body {
     padding: 0;  /* make it look decent enough */
 }
 
+.logout {
+    display:inline-block;
+    padding-top: 11px;
+
+}
 
 a
 {
