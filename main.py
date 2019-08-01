@@ -34,8 +34,12 @@ class MainHandler(webapp2.RequestHandler):
         values = get_user_data()
         if get_user_email():
             profile = socialdataapp.get_user_profile(get_user_email())
-            if profile:
+            if profile: 
                 values['name'] = profile.name
+                values['user_contacts']= profile.user_contacts
+            else:
+                create_user_profile(get_user_email())
+                
         render_template(self, 'mainpageapp.html', values)
 
     def post(self):
@@ -57,7 +61,8 @@ class ProfileEditHandler(webapp2.RequestHandler):
             if profile:
                 values['name'] = profile.name
                 values['description'] = profile.phone_number
-            render_template(self, 'profile-edit.html', values)
+          
+                render_template(self, 'profile-edit.html', values)
 
 
 class ProfileSaveHandler(webapp2.RequestHandler):
@@ -90,7 +95,7 @@ class ProfileSaveHandler(webapp2.RequestHandler):
             if error_text:
                 values['errormsg'] = error_text
             else:
-                socialdataapp.save_profile(email, name, phone_number)
+                socialdataapp.save_contact(get_user_email(), email, name, phone_number)
                 values['successmsg'] = 'Everything worked out fine.'
             render_template(self, 'profile-save.html', values)
 

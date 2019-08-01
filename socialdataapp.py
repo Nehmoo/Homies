@@ -1,4 +1,5 @@
 from socialmodelapp import HomiesProfile
+from socialmodelapp import ContactProfile
 
 def save_profile(email, name, phone_number):
     p = get_user_profile(email)
@@ -8,6 +9,14 @@ def save_profile(email, name, phone_number):
     else:
         p = HomiesProfile(email=email, name=name, phone_number=int(phone_number))
     p.put()
+
+def save_contact(user_email, contact_email, contact_name, contact_number):
+    p = get_user_profile(user_email) 
+    c = ContactProfile(email = contact_email, name = contact_name, phone_number = int(contact_number))
+    p.user_contacts.append(c.put())
+
+def create_user_profile(email):
+    c = 
 
 def get_user_profile(email):
     q = HomiesProfile.query(HomiesProfile.email == email)
