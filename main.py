@@ -70,27 +70,20 @@ class MainHandler(webapp2.RequestHandler):
         print "Leaving POST for MainHandler"
 
 
-
-
 class TextHandler(webapp2.RequestHandler):
     def get(self):
         values = get_user_data()
         render_template(self, 'homietext.html', values)
 
     def post(self):
-        from_address = 'anything@yeetbruh.appspotmail.com'
         phone = self.request.get('phone')
-        print(phone)
-        mail.send_mail(from_address, str(phone) + '@messaging.sprintpcs.com', 'Kisses', 'Your homie has just sent you a kiss!')
-        mail.send_mail(from_address, str(phone) + '@vtext.com', 'Kisses', 'Your homie has just sent you a kiss!')
-        mail.send_mail(from_address, str(phone) + '@txt.att.net', 'Kisses', 'Your homie has just sent you a kiss!')
-        mail.send_mail(from_address, str(phone) + '@tmomail.net', 'Kisses', 'Your homie has just sent you a kiss!')
-        mail.send_mail(from_address, str(phone) + '@mymetropcs.com', 'Kisses', 'Your homie has just sent you a kiss!')
-        # mail.send_mail(from_address + '@messaging.sprintpcs.com', phone, 'Kisses', 'Your homie has just sent you a kiss!')
-        # mail.send_mail(from_address + '@vtext.com', phone, 'Kisses', 'Your homie has just sent you a kiss!')
-        # mail.send_mail(from_address + '@txt.att.net', phone, 'Kisses', 'Your homie has just sent you a kiss!')
-        # mail.send_mail(from_address + '@tmomail.net', phone, 'Kisses', 'Your homie has just sent you a kiss!')
-        # mail.send_mail(from_address + '@mymetropcs.com', phone, 'Kisses', 'Your homie has just sent you a kiss!')
+        print phone
+        from_address = 'anything@yeetbruh.appspotmail.com'
+        mail.send_mail(from_address, phone + '@tmomail.net', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, phone + '@messaging.sprintpcs.com', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, phone + '@vtext.com', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, phone + '@txt.att.net', 'Kisses', 'Your homie has just sent you a kiss!')
+        mail.send_mail(from_address, phone + '@mymetropcs.com', 'Kisses', 'Your homie has just sent you a kiss!')
         values = get_user_data()
         values['message'] = 'The kiss has been sent.'
         render_template(self, 'messagesent.html', values)
@@ -153,6 +146,7 @@ class ContactSaveHandler(webapp2.RequestHandler):
                 values['successmsg'] = 'Everything worked out fine.'
             render_template(self, 'profile-save.html', values)
 
+
 class ProfileViewHandler(webapp2.RequestHandler):
     def get(self, profilename):
         profile = socialdataapp.get_profile_by_name(profilename)
@@ -187,8 +181,10 @@ class FormHandler(webapp2.RequestHandler):
 class NotFoundHandler(webapp2.RequestHandler):
     def get(self):
         self.response.out.write('that path is not mapped.')
+
     def post(self):
         self.response.out.write('that path is not mapped.')
+
 
 app = webapp2.WSGIApplication([
     ('/homietext', TextHandler),
