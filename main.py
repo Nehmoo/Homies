@@ -43,6 +43,7 @@ def get_user_data():
 
 
 class MainHandler(webapp2.RequestHandler):
+
     def get(self):
         values = get_user_data()
         if get_user_email():
@@ -62,12 +63,15 @@ class MainHandler(webapp2.RequestHandler):
         print "Entering POST for MainHandler"
         from_address = 'anything@yeetbruh.appspotmail.com'
         email = self.request.get('email')
-        print "Email: " + email
-        mail.send_mail(from_address, email, 'Kisses', 'Your homie has just sent you a kiss!')
-        values = get_user_data()
-        values['message'] = 'The kiss has been sent.'
-        render_template(self, 'messagesent.html', values)
-        print "Leaving POST for MainHandler"
+        if len(email) != 0:
+            print "Email: " + email
+            mail.send_mail(from_address, email, 'Kisses', 'Your homie has just sent you a kiss!')
+            values = get_user_data()
+            values['message'] = 'The kiss has been sent.'
+            render_template(self, 'messagesent.html', values)
+            print "Leaving POST for MainHandler"
+        else:
+            self.redirect('/')
 
 
 class TextHandler(webapp2.RequestHandler):
