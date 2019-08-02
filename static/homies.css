@@ -1,9 +1,15 @@
-
 h1 {
+    margin-top: 5%;
     font-size: 20px;
     text-align: center;
-    color:#F7DC6F;
+    color:#FFA494;
 }
+
+.enteremail{
+     text-align: center;
+     margin: 15px;
+}
+
 .homie {
     font-family: 'Pacifico'; font-size: 40px;
     color: white ;
@@ -196,7 +202,7 @@ button:hover{
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  margin-top:300px;
+  margin-top:200px;
   display: inline-block;
   font-size: 16px; 
 }
@@ -216,3 +222,11 @@ button:hover{
 
 }
 
+.scroll{
+ margin: auto;
+ height:30%;
+ width:30%;
+ overflow:auto;
+ border:5px solid #F28F8F;
+ padding:0%;
+}

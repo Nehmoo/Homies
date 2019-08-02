@@ -2,21 +2,17 @@
 {% block content %}
 
 <h1> Contacts </h1>
-<div style="
-height:100px;
-width:140px;
-overflow:auto;
-background-color:yellowgreen;
-color:white;
-scrollbar-base-color:gold;
-font-family:sans-serif;
-padding:10px;">
+<div class="scroll">
+
 {% for contact in user_contacts %}
   {{contact.name}}
 <form method= "post" action="/">
 <input type="submit" value="Smooch via email">
 <input type="hidden" name="email" value="{{contact.email}}">
+</form>
+<form method= "post" action="/">
 <input type= "submit" value="smooch via text">
+<input type= "hidden" name="text" value="{{contanct.phone_number}}">
 </form>
    </strong> <br> <br>
 {% endfor %}
