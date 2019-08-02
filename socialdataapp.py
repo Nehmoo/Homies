@@ -4,7 +4,7 @@ from socialmodelapp import ContactProfile
 
 def ensure_profile(email):
     if not get_user_profile(email):
-        p = HomiesProfile(email = email, name = email, phone_number=0)
+        p = HomiesProfile(email = email, name= email, phone_number=0)
         p.put()
 
 
